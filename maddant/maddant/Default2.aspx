@@ -43,14 +43,14 @@
                  
                  <asp:Panel ID="pnlNormale"  class="hContent" runat="server" Height="100%">
 
-                     <iframe  class="hContent full" src="Evento.aspx"></iframe>
+                     <iframe  class="hContent full" src="http://www.maddalena.it"></iframe>
 
                  </asp:Panel>
 
                  <asp:Panel ID="pnlEvento"  runat="server" Height="100%">
 
                      <iframe class="eContent half" src="Evento.aspx"></iframe>
-                     <iframe  class="hContent half" src="http://www.dbinfo.it"></iframe>
+                     <iframe  class="hContent half" src="http://www.maddalena.it"></iframe>
 
                  </asp:Panel>
         <asp:ScriptManager ID="ScriptManager1" runat="server">

@@ -32,14 +32,14 @@ public class EVENTO_PARTECIPANTIBLL
     }
 
 
-    // --leal:210204:Selezione di record 
-    // per la tabella EVENTO_PARTECIPANTI 
+    //// --leal:210204:Selezione di record 
+    //// per la tabella EVENTO_PARTECIPANTI 
 
-    [System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, true)]
-    public maddant.src.DAL.dsmaddant.EVENTO_PARTECIPANTIDataTable GetEVENTO_PARTECIPANTI()
-    {
-        return Adapter.GetData();
-    }
+    //[System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, true)]
+    //public maddant.src.DAL.dsmaddant.EVENTO_PARTECIPANTIDataTable GetEVENTO_PARTECIPANTI()
+    //{
+    //    return Adapter.GetData();
+    //}
 
 
 

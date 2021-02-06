@@ -31,12 +31,22 @@ public class AZIENDABLL
         }
     }
 
+    //ritorna l'ultimo progressivo in tabella oppure 0
+    public int GetLastID()
+    {
+        Nullable<int> lngRes;
+        lngRes = Adapter.GetLastId();
+        if (!lngRes.HasValue)
+            lngRes = 0;
+        return lngRes.Value;
+    }
+
 
     // --leal:210204:Selezione di record 
     // per la tabella AZIENDA 
 
     [System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, true)]
-    public maddant.src.DAL.dsmaddant.AZIENDADataTable GetAZIENDA()
+    public maddant.src.DAL.dsmaddant.AZIENDADataTable GetAZIENDE()
     {
         return Adapter.GetData();
     }
@@ -58,7 +68,8 @@ public class AZIENDABLL
     public int AddAZIENDA(int A_ID, string A_RAGSOC)
     {
         int rowsAffected = 0;
-
+        if (A_ID <= 0)
+            A_ID = GetLastID() + 1;
         maddant.src.DAL.dsmaddant.AZIENDADataTable TAZIENDA = new maddant.src.DAL.dsmaddant.AZIENDADataTable();
         maddant.src.DAL.dsmaddant.AZIENDARow ObjRow = TAZIENDA.NewAZIENDARow();
 
@@ -77,7 +88,7 @@ public class AZIENDABLL
         {
             Utils.RaiseBllError( ex.Message);
         }
-        return 0;
+        return A_ID;
     }
 
 

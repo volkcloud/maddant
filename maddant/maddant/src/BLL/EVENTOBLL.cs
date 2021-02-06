@@ -31,12 +31,22 @@ public class EVENTOBLL
         }
     }
 
+    //ritorna l'ultimo progressivo in tabella oppure 0
+    public int GetLastID()
+    {
+        Nullable<int> lngRes;
+        lngRes = Adapter.GetLastId();
+        if (!lngRes.HasValue)
+            lngRes = 0;
+        return lngRes.Value;
+    }
+
 
     // --leal:210204:Selezione di record 
     // per la tabella EVENTO 
 
     [System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, true)]
-    public maddant.src.DAL.dsmaddant.EVENTODataTable GetEVENTO()
+    public maddant.src.DAL.dsmaddant.EVENTODataTable GetEVENTI()
     {
         return Adapter.GetData();
     }
@@ -61,7 +71,8 @@ public class EVENTOBLL
     public int AddEVENTO(int E_ID, int A_ID, DateTime E_DATA, TimeSpan E_ORAI, TimeSpan E_ORAF)
     {
         int rowsAffected = 0;
-
+        if (E_ID <= 0)
+            E_ID = GetLastID() + 1;
         maddant.src.DAL.dsmaddant.EVENTODataTable TEVENTO = new maddant.src.DAL.dsmaddant.EVENTODataTable();
         maddant.src.DAL.dsmaddant.EVENTORow ObjRow = TEVENTO.NewEVENTORow();
 
@@ -83,7 +94,7 @@ public class EVENTOBLL
         {
             Utils.RaiseBllError( ex.Message);
         }
-        return 0;
+        return E_ID;
     }
 
 

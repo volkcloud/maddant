@@ -11,52 +11,34 @@ namespace maddant
 {
 
 
-    public partial class _Default
+    public partial class gestione1
     {
 
         /// <summary>
-        /// Controllo UpdatePanel1.
+        /// Controllo TextBox1.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
 
         /// <summary>
-        /// Controllo tmrLive.
+        /// Controllo tblP.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.Timer tmrLive;
+        protected global::System.Web.UI.WebControls.Table tblP;
 
         /// <summary>
-        /// Controllo Label1.
+        /// Controllo btnCrea.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-
-        /// <summary>
-        /// Controllo pnlNormale.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlNormale;
-
-        /// <summary>
-        /// Controllo pnlEvento.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlEvento;
+        protected global::System.Web.UI.WebControls.Button btnCrea;
     }
 }

@@ -31,6 +31,16 @@ public class DIPENDENTIBLL
         }
     }
 
+    //ritorna l'ultimo progressivo in tabella oppure 0
+    public int GetLastID()
+    {
+        Nullable<int> lngRes;
+        lngRes = Adapter.GetLastId();
+        if (!lngRes.HasValue)
+            lngRes = 0;
+        return lngRes.Value;
+    }
+
 
     // --leal:210204:Selezione di record 
     // per la tabella DIPENDENTI 
@@ -59,6 +69,8 @@ public class DIPENDENTIBLL
     {
         int rowsAffected = 0;
 
+        if (D_ID <= 0)
+            D_ID = GetLastID() + 1;
 
         maddant.src.DAL.dsmaddant.DIPENDENTIDataTable TDIPENDENTI = new maddant.src.DAL.dsmaddant.DIPENDENTIDataTable();
         maddant.src.DAL.dsmaddant.DIPENDENTIRow ObjRow = TDIPENDENTI.NewDIPENDENTIRow();
@@ -79,7 +91,7 @@ public class DIPENDENTIBLL
         {
             Utils.RaiseBllError( ex.Message);
         }
-        return 0;
+        return D_ID;
     }
 
 
