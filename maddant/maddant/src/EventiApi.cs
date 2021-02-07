@@ -28,7 +28,8 @@ namespace maddant.src
         [HttpPost]
         // POST api/<controller>
         //public void Post([FromBody] string value)
-        public void Post(evento ev )
+      //  public void Post(evento ev )
+        public void Post(string ev )
         {
 
         }

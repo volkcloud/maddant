@@ -1,27 +1,77 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="gestione.aspx.cs" Inherits="maddant.gestione1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    
+    <style>
+        .errorMsg {
+        color: #f00;
+        font-size:medium;
+        }
+
+    </style>
 
   <div class="container">
 
       <div class="row">
           
           <div class="col-sm-12">
-            <h2>titolo</h2>
+            <h2>Evento</h2>
           </div>
       
       </div><%--row--%>
 
-
       <div class="row">
-         <div class="col-sm-12">
-             <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+         <div class="col-sm-3">
+           <asp:Label CssClass="col-form-label" ID="Label1" runat="server" Text="Azienda"></asp:Label>
+         </div>
+          <div class="col-sm-1">
+          <asp:RequiredFieldValidator ValidationGroup="crea"  ID="RequiredFieldValidator1" runat="server" ControlToValidate="edAzienda" CssClass="errorMsg" ErrorMessage="*"></asp:RequiredFieldValidator>
+             
+      
+         </div>
+         <div class="col-sm-8">
+             <asp:TextBox ValidationGroup="crea"  CssClass="form-control"  ID="edAzienda" runat="server" Width="400px"></asp:TextBox>
+             
+               
+             
          </div>
       </div>  
 
+
+
+       <div class="row">
+         <div class="col-sm-3">
+           <asp:Label CssClass="control-label" ID="Label2" runat="server" Text="Data"></asp:Label>
+         </div>
+         <div class="col-sm-1">
+             <asp:RequiredFieldValidator ValidationGroup="crea" ID="RequiredFieldValidator2" runat="server" ControlToValidate="edData" CssClass="errorMsg" ErrorMessage="*"></asp:RequiredFieldValidator>
+             <asp:RegularExpressionValidator ValidationGroup="crea" ID="RegularExpressionValidator1" runat="server" ControlToValidate="edData" CssClass="errorMsg" ErrorMessage="*" ValidationExpression="^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$"></asp:RegularExpressionValidator>
+
+         </div>
+         <div class="col-sm-8">
+            <asp:TextBox ValidationGroup="crea"  CssClass="form-control" ID="edData" runat="server" Width="120px"></asp:TextBox>
+          </div>
+      </div>  
+
+
+
+
      <div class="row">
-         
+          <div class="col-sm-3">
+           <asp:Label CssClass="control-label" ID="Label3" runat="server" Text="Partecipante"></asp:Label>
+
+          </div>  
+          <div class="col-sm-7">
+            <asp:TextBox ValidationGroup="part"  CssClass="form-control" ID="edPartecipante" runat="server" Width="120px"></asp:TextBox>
+
+          </div>  
+          <div class="col-sm-1">
+             <asp:RequiredFieldValidator ValidationGroup="part" ID="RequiredFieldValidator3" runat="server" ControlToValidate="edPartecipante" CssClass="errorMsg" ErrorMessage="*"></asp:RequiredFieldValidator>
+          </div>  
+          <div class="col-sm-1">
+              <asp:Button  OnClientClick="pUpdate();return false;" class="btn btn-primary" ID="btnPart" runat="server" Text="Agg."   ValidationGroup="part" />
+
+          </div>           
+<%--  
       <div class="col-sm-12">
         <div class="panel panel-primary">
           <div class="panel-heading">
@@ -48,6 +98,7 @@
           
         </div>
       </div>
+         --%>
     </div><%--row--%>
 
 
@@ -72,7 +123,7 @@
           
            <div class="col-sm-12">
                
-                <asp:Button   class="btn btn-primary" ID="btnCrea" runat="server" Text="Crea" OnClientClick="save();return false;"   />
+                <asp:Button  OnClientClick="save();return false;" class="btn btn-primary" ID="btnCrea" runat="server" Text="Crea"   ValidationGroup="crea" />
                
            </div>      
       </div><%--row--%>
@@ -80,73 +131,5 @@
   </div><%--container--%>
 
 
-    <script  type="text/javascript">
-        function pUpdate() {
-            if ($("#pname").val() != null &&
-                $("#pname").val() != '') {
-                // Add product to Table
-                pAddToTable();
-
-                // Clear form fields
-                formClear();
-
-                // Focus to product name field
-                $("#pname").focus();
-            }
-        }
-
-        
-        function pAddToTable() {
-      
-            if ($("#MainContent_tblP tbody").length == 0) {
-                $("#MainContent_tblP").append("<tbody></tbody>");
-            }
-
-            
-            $("#MainContent_tblP tbody").append(
-                "<tr>" +
-                "<td>" + $("#pname").val() + "</td>" +
-                "<td>" +
-                "<button type='button' " +
-                "onclick='pDelete(this);' " +
-                "class='btn btn-default'>" +
-                "<span class='glyphicon glyphicon-remove' />" +
-                "</button>" +
-                "</td>" +
-                "</tr>"
-            );
-        }
-
-        // Clear form fields
-        function formClear() {
-            $("#pname").val("");
-           
-        }
-
-        // Delete product from <table>
-        function pDelete(ctl) {
-            $(ctl).parents("tr").remove();
-        }
-
-
-        function save() {
-            var ev = {};
-            ev.descrizione = 'bla';
-          
-            $.ajax({
-                url: "/api/Eventi/",
-                type: 'POST',
-                dataType: 'json',
-                contentType:
-                    "application/json;charset=utf-8",
-                data:ev,
-                success: function () {
-                    alert('ok');
-                },
-                error: function (request, message, error) {
-                   alert(message);
-                }
-            });
-        }
-    </script>
+    <script src="Scripts/formgestione.js"></script>
 </asp:Content>
