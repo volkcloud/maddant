@@ -135,6 +135,39 @@
            </div>      
       </div><%--row--%>
 
+
+      <div class="row">
+          <div class="col-sm-12">
+               <h2>Prossimi eventi</h2> 
+           </div>      
+      </div><%--row--%>
+
+      <div class="row">
+          <div class="col-sm-12">
+              <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" DeleteMethod="DelEVENTOByID" InsertMethod="AddEVENTO" OldValuesParameterFormatString="original_{0}" SelectMethod="GetEVENTIFuturi" TypeName="EVENTOBLL">
+                  <DeleteParameters>
+                      <asp:Parameter Name="Original_E_ID" Type="Int32" />
+                  </DeleteParameters>
+                  <InsertParameters>
+                      <asp:Parameter Name="E_ID" Type="Int32" />
+                      <asp:Parameter Name="A_ID" Type="Int32" />
+                      <asp:Parameter Name="E_DATA" Type="DateTime" />
+                      <asp:Parameter DbType="Time" Name="E_ORAI" />
+                      <asp:Parameter DbType="Time" Name="E_ORAF" />
+                  </InsertParameters>
+              </asp:ObjectDataSource>
+              <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="E_ID" DataSourceID="ObjectDataSource1">
+                  <Columns>
+                      <asp:CommandField ShowDeleteButton="True" />
+                      <asp:BoundField DataField="E_ID" HeaderText="E_ID" SortExpression="E_ID" ReadOnly="True" Visible="False" />
+                      <asp:BoundField DataField="E_DATA" DataFormatString="{0:d}" HeaderText="DATA" SortExpression="E_DATA" />
+
+                  </Columns>
+              </asp:GridView>
+          </div>      
+      </div><%--row--%>
+
+
   </div><%--container--%>
    
 

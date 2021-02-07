@@ -8,6 +8,7 @@ using System.Web.Http;
 using System.Transactions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Globalization;
 
 namespace maddant.src
 {
@@ -36,7 +37,19 @@ namespace maddant.src
             int id_az;
             int id_dip;
             int id_ev;
-        
+            DateTime dataEvento;
+
+            try
+            {
+                dataEvento=DateTime.ParseExact(eventoCompleto["data"].ToString(), "d/M/yyyy", CultureInfo.InvariantCulture);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Data non valida");
+            }
+           
+
+
             using (TransactionScope scope = new TransactionScope())
             {
                 EVENTOBLL ev = new EVENTOBLL();
@@ -53,7 +66,9 @@ namespace maddant.src
                 }
 
                 
-                id_ev = ev.AddEVENTO(0, id_az, DateTime.Now.Date, new TimeSpan(8, 0, 0), new TimeSpan(17, 0, 0));
+                id_ev = ev.AddEVENTO(0, id_az,
+                    dataEvento,
+                    new TimeSpan(8, 0, 0), new TimeSpan(17, 0, 0));
                 if (id_ev <= 0)
                 {
                     return;
@@ -63,13 +78,16 @@ namespace maddant.src
 
                 foreach (var p in eventoCompleto["partecipanti"]["partecipanti"])
                 {
-                    DIPENDENTIBLL di = new DIPENDENTIBLL();
-                    id_dip = di.AddDIPENDENTI(0, id_az, p["nome"].ToString());
-                    if (id_dip <= 0)
+                    if ( (p != null) && (p.HasValues)) //può essere stato eliminato
                     {
-                        return;
+                        DIPENDENTIBLL di = new DIPENDENTIBLL();
+                        id_dip = di.AddDIPENDENTI(0, id_az, p["nome"].ToString());
+                        if (id_dip <= 0)
+                        {
+                            return;
+                        }
+                        ep.AddEVENTO_PARTECIPANTI(id_ev, id_dip);
                     }
-                    ep.AddEVENTO_PARTECIPANTI(id_ev, id_dip);
                 }
 
                    

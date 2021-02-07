@@ -42,13 +42,17 @@ public class EVENTOBLL
     }
 
 
-    // --leal:210204:Selezione di record 
-    // per la tabella EVENTO 
-
+  
     [System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, true)]
     public maddant.src.DAL.dsmaddant.EVENTODataTable GetEVENTI()
     {
         return Adapter.GetData();
+    }
+
+    [System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, true)]
+    public maddant.src.DAL.dsmaddant.EVENTODataTable GetEVENTIFuturi()
+    {
+        return Adapter.GetEventiFuturi(DateTime.Now);
     }
 
     [System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, true)]
@@ -70,6 +74,21 @@ public class EVENTOBLL
     [System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Insert, true)]
     public int AddEVENTO(int E_ID, int A_ID, DateTime E_DATA, TimeSpan E_ORAI, TimeSpan E_ORAF)
     {
+
+        if (E_DATA < DateTime.Now.Date)
+        {
+            throw new Exception("Non è permesso inserire evento nel passato");
+
+        }
+
+        // blocca eventi in data già presente
+        maddant.src.DAL.dsmaddant.EVENTODataTable TEVENTOaltro = Adapter.GetEventoByData(E_DATA);
+        if (TEVENTOaltro.Count > 0)
+        {
+            throw new Exception("Un evento è già pianificato per la data");
+
+        }
+
         int rowsAffected = 0;
         if (E_ID <= 0)
             E_ID = GetLastID() + 1;
@@ -141,7 +160,7 @@ public class EVENTOBLL
     // per la tabella EVENTO  secondo la chiave primaria
 
     [System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Delete, true)]
-    public int DelEVENTOByID(string EVENTOTS, int Original_E_ID
+    public int DelEVENTOByID( int Original_E_ID
         )
     {
        
