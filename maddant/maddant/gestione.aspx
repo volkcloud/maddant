@@ -5,6 +5,7 @@
         .errorMsg {
         color: #f00;
         font-size:medium;
+       
         }
 
     </style>
@@ -59,16 +60,17 @@
           <div class="col-sm-3">
            <asp:Label CssClass="control-label" ID="Label3" runat="server" Text="Partecipante"></asp:Label>
 
-          </div>  
-          <div class="col-sm-7">
-            <asp:TextBox ValidationGroup="part"  CssClass="form-control" ID="edPartecipante" runat="server" Width="120px"></asp:TextBox>
-
-          </div>  
-          <div class="col-sm-1">
+          </div>    
+         <div class="col-sm-1">
              <asp:RequiredFieldValidator ValidationGroup="part" ID="RequiredFieldValidator3" runat="server" ControlToValidate="edPartecipante" CssClass="errorMsg" ErrorMessage="*"></asp:RequiredFieldValidator>
           </div>  
+          <div class="col-sm-7">
+            <asp:TextBox ValidationGroup="part"  CssClass="form-control" ID="edPartecipante" runat="server" Width="400px"></asp:TextBox>
+
+          </div>  
+      
           <div class="col-sm-1">
-              <asp:Button  OnClientClick="pUpdate();return false;" class="btn btn-primary" ID="btnPart" runat="server" Text="Agg."   ValidationGroup="part" />
+              <asp:Button  OnClientClick="return pUpdate();" class="btn btn-primary" ID="btnPart" runat="server" Text="Agg."   ValidationGroup="part" />
 
           </div>           
 <%--  
@@ -104,18 +106,23 @@
 
 
       <div class="row">
+           <div class="col-sm-1">
+           </div>
           
-           <div class="col-sm-12">
+           <div class="col-sm-10">
                 
                 <asp:Table ID="tblP" runat="server" EnableViewState="true"  class="table table-bordered table-condensed table-striped">
                     <asp:TableHeaderRow>
-                        <asp:TableHeaderCell>Nome</asp:TableHeaderCell>
+                        <asp:TableHeaderCell Width="80%">Nome</asp:TableHeaderCell>
                         <asp:TableHeaderCell>X</asp:TableHeaderCell>
                     </asp:TableHeaderRow>
 
                  </asp:Table>
 
-            </div>      
+            </div>  
+          
+           <div class="col-sm-1">
+           </div>
       </div><%--container--%>
 
 
@@ -123,13 +130,21 @@
           
            <div class="col-sm-12">
                
-                <asp:Button  OnClientClick="save();return false;" class="btn btn-primary" ID="btnCrea" runat="server" Text="Crea"   ValidationGroup="crea" />
+                <asp:Button  OnClientClick="return save();" class="btn btn-primary" ID="btnCrea" runat="server" Text="Crea"   ValidationGroup="crea" />
                
            </div>      
       </div><%--row--%>
 
   </div><%--container--%>
+   
 
 
     <script src="Scripts/formgestione.js"></script>
+   
+    <script>
+        window.onload = function(){
+            formClear();
+        }
+
+    </script>
 </asp:Content>

@@ -1,4 +1,30 @@
-﻿
+﻿/*
+var myObj, i, j, x = "";
+myObj = {
+    "name": "John",
+    "age": 30,
+    "cars": [
+        { "name": "Ford", "models": ["Fiesta", "Focus", "Mustang"] },
+        { "name": "BMW", "models": ["320", "X3", "X5"] },
+        { "name": "Fiat", "models": ["500", "Panda"] }
+    ]
+}
+for (i in myObj.cars) {
+    x += "<h2>" + myObj.cars[i].name + "</h2>";
+    for (j in myObj.cars[i].models) {
+        x += myObj.cars[i].models[j] + "<br>";
+    }
+}
+*/
+var partecipanti;
+partecipanti = {
+    "last":0,
+    "partecipanti": [
+        //{ "nome": "carlo" },
+        //{ "nome": "mario" }
+    ]
+}
+
 function pUpdate() {
     var validationResult = true;
 
@@ -17,9 +43,11 @@ function pUpdate() {
       // Clear form fields
       formClear();
 
-      $("#pname").focus();
-    }
+    $("#MainContent_edPartecipante").focus();
+    return false;
 }
+
+
 
 
 function pAddToTable() {
@@ -29,13 +57,19 @@ function pAddToTable() {
     
     }
 
+    var n = {
+        id: partecipanti.last + 1,
+        nome: $("#MainContent_edPartecipante").val()
+    };
+    partecipanti.partecipanti.push(n);
+    partecipanti.last = partecipanti.last + 1;
    
     $("#MainContent_tblP tbody").append(
                 "<tr>" +
-                "<td>" + $("#pname").val() + "</td>" +
+        "<td>" + $("#MainContent_edPartecipante").val() + "</td>" +
                 "<td>" +
                 "<button type='button' " +
-            "onclick='pDelete(this);' " +
+            "onclick='pDelete(this," + n.id +");' " +
             "class='btn btn-default'>" +
                 "<span class='glyphicon glyphicon-remove' />" +
                 "</button>" +
@@ -46,13 +80,22 @@ function pAddToTable() {
 
 // Clear form fields
 function formClear() {
-    $("#pname").val("");
+    $("#MainContent_edPartecipante").val("");
 
+    $("#MainContent_edData").val(new Date(Date.now()).toLocaleString().split(',')[0]);
 }
 
 // Delete product from <table>
-function pDelete(ctl) {
+function pDelete(ctl,arrayid) {
     $(ctl).parents("tr").remove();
+
+    for (j in partecipanti.partecipanti) {
+        if (partecipanti.partecipanti[j].id == arrayid)
+        {
+            delete partecipanti.partecipanti[j];
+            return;
+        }
+    }
 }
 
 //javascript: WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$MainContent$btnCrea", "", true, "crea", "", false, false))
@@ -83,8 +126,13 @@ function save() {
         alert('Ci sono errori nei campi, impossibile proseguire');
         return false;
     }
-    var ev = {};
-    ev.descrizione = 'bla';
+    //var ev = {};
+    //ev.azienda = 'bla';//$("#MainContent_edAzienda").val();
+    var ev = {
+        'azienda': $("#MainContent_edAzienda").val(),
+        'data': $("#MainContent_edData").val(),
+        'partecipanti':partecipanti
+    };
 
     $.ajax({
         url: "/api/Eventi/",
@@ -92,13 +140,15 @@ function save() {
         dataType: 'json',
         contentType:
             "application/json;charset=utf-8",
-        data: ev,
+        data: JSON.stringify(ev),
         success: function () {
             alert('ok');
         },
         error: function (request, message, error) {
-            alert(message);
+            alert(message + "\n" + request.responseJSON.ExceptionMessage);
         }
     });
+
+    return false;
 }
     

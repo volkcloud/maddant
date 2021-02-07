@@ -85,15 +85,6 @@ namespace maddant {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// Controllo edPartecipante.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox edPartecipante;
-        
-        /// <summary>
         /// Controllo RequiredFieldValidator3.
         /// </summary>
         /// <remarks>
@@ -101,6 +92,15 @@ namespace maddant {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+        
+        /// <summary>
+        /// Controllo edPartecipante.
+        /// </summary>
+        /// <remarks>
+        /// Campo generato automaticamente.
+        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox edPartecipante;
         
         /// <summary>
         /// Controllo btnPart.

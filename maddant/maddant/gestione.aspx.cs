@@ -12,7 +12,10 @@ namespace maddant
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+               // edData.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            }
         }
 
 
@@ -26,9 +29,6 @@ namespace maddant
 
         //}
 
-        protected void btnCrea_Click1(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
