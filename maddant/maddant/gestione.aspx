@@ -69,8 +69,11 @@
 
           </div>  
       
-          <div class="col-sm-3">
+          <div class="col-sm-1">
               <asp:Button  OnClientClick="return pUpdate();" class="btn btn-primary" ID="btnPart" runat="server" Text="Agg."   ValidationGroup="part" />
+
+          </div>    
+         <div class="col-sm-2">
 
           </div>           
 <%--  
@@ -106,22 +109,22 @@
 
 
       <div class="row">
-           <div class="col-sm-1">
+           <div class="col-sm-3">
            </div>
           
-           <div class="col-sm-10">
+           <div class="col-sm-7">
                 
                 <asp:Table ID="tblP" runat="server" EnableViewState="true"  class="table table-bordered table-condensed table-striped">
                     <asp:TableHeaderRow>
                         <asp:TableHeaderCell Width="90%">Nome</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>X</asp:TableHeaderCell>
+                        <asp:TableHeaderCell>Elimina</asp:TableHeaderCell>
                     </asp:TableHeaderRow>
 
                  </asp:Table>
 
             </div>  
           
-           <div class="col-sm-1">
+           <div class="col-sm-3">
            </div>
       </div>
 
