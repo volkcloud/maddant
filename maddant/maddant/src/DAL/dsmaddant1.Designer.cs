@@ -34,10 +34,6 @@ namespace maddant.src.DAL {
         
         private vwEvDataTable tablevwEv;
         
-        private global::System.Data.DataRelation relationFK_EVENTO_PARTECIPANTI_EVENTO;
-        
-        private global::System.Data.DataRelation relationFK_EVENTO_PARTECIPANTI_DIPENDENTI;
-        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -294,8 +290,6 @@ namespace maddant.src.DAL {
                     this.tablevwEv.InitVars();
                 }
             }
-            this.relationFK_EVENTO_PARTECIPANTI_EVENTO = this.Relations["FK_EVENTO_PARTECIPANTI_EVENTO"];
-            this.relationFK_EVENTO_PARTECIPANTI_DIPENDENTI = this.Relations["FK_EVENTO_PARTECIPANTI_DIPENDENTI"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -316,14 +310,6 @@ namespace maddant.src.DAL {
             base.Tables.Add(this.tableDIPENDENTI);
             this.tablevwEv = new vwEvDataTable();
             base.Tables.Add(this.tablevwEv);
-            this.relationFK_EVENTO_PARTECIPANTI_EVENTO = new global::System.Data.DataRelation("FK_EVENTO_PARTECIPANTI_EVENTO", new global::System.Data.DataColumn[] {
-                        this.tableEVENTO.E_IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableEVENTO_PARTECIPANTI.E_IDColumn}, false);
-            this.Relations.Add(this.relationFK_EVENTO_PARTECIPANTI_EVENTO);
-            this.relationFK_EVENTO_PARTECIPANTI_DIPENDENTI = new global::System.Data.DataRelation("FK_EVENTO_PARTECIPANTI_DIPENDENTI", new global::System.Data.DataColumn[] {
-                        this.tableDIPENDENTI.D_IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableEVENTO_PARTECIPANTI.D_IDColumn}, false);
-            this.Relations.Add(this.relationFK_EVENTO_PARTECIPANTI_DIPENDENTI);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1110,17 +1096,11 @@ namespace maddant.src.DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public EVENTO_PARTECIPANTIRow AddEVENTO_PARTECIPANTIRow(EVENTORow parentEVENTORowByFK_EVENTO_PARTECIPANTI_EVENTO, DIPENDENTIRow parentDIPENDENTIRowByFK_EVENTO_PARTECIPANTI_DIPENDENTI) {
+            public EVENTO_PARTECIPANTIRow AddEVENTO_PARTECIPANTIRow(int E_ID, int D_ID) {
                 EVENTO_PARTECIPANTIRow rowEVENTO_PARTECIPANTIRow = ((EVENTO_PARTECIPANTIRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
-                        null};
-                if ((parentEVENTORowByFK_EVENTO_PARTECIPANTI_EVENTO != null)) {
-                    columnValuesArray[0] = parentEVENTORowByFK_EVENTO_PARTECIPANTI_EVENTO[0];
-                }
-                if ((parentDIPENDENTIRowByFK_EVENTO_PARTECIPANTI_DIPENDENTI != null)) {
-                    columnValuesArray[1] = parentDIPENDENTIRowByFK_EVENTO_PARTECIPANTI_DIPENDENTI[0];
-                }
+                        E_ID,
+                        D_ID};
                 rowEVENTO_PARTECIPANTIRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEVENTO_PARTECIPANTIRow);
                 return rowEVENTO_PARTECIPANTIRow;
@@ -2099,17 +2079,6 @@ namespace maddant.src.DAL {
             public void SetE_ORAFNull() {
                 this[this.tableEVENTO.E_ORAFColumn] = global::System.Convert.DBNull;
             }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public EVENTO_PARTECIPANTIRow[] GetEVENTO_PARTECIPANTIRows() {
-                if ((this.Table.ChildRelations["FK_EVENTO_PARTECIPANTI_EVENTO"] == null)) {
-                    return new EVENTO_PARTECIPANTIRow[0];
-                }
-                else {
-                    return ((EVENTO_PARTECIPANTIRow[])(base.GetChildRows(this.Table.ChildRelations["FK_EVENTO_PARTECIPANTI_EVENTO"])));
-                }
-            }
         }
         
         /// <summary>
@@ -2145,28 +2114,6 @@ namespace maddant.src.DAL {
                 }
                 set {
                     this[this.tableEVENTO_PARTECIPANTI.D_IDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public EVENTORow EVENTORow {
-                get {
-                    return ((EVENTORow)(this.GetParentRow(this.Table.ParentRelations["FK_EVENTO_PARTECIPANTI_EVENTO"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_EVENTO_PARTECIPANTI_EVENTO"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public DIPENDENTIRow DIPENDENTIRow {
-                get {
-                    return ((DIPENDENTIRow)(this.GetParentRow(this.Table.ParentRelations["FK_EVENTO_PARTECIPANTI_DIPENDENTI"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_EVENTO_PARTECIPANTI_DIPENDENTI"]);
                 }
             }
         }
@@ -2250,17 +2197,6 @@ namespace maddant.src.DAL {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetD_NOMECOGNNull() {
                 this[this.tableDIPENDENTI.D_NOMECOGNColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public EVENTO_PARTECIPANTIRow[] GetEVENTO_PARTECIPANTIRows() {
-                if ((this.Table.ChildRelations["FK_EVENTO_PARTECIPANTI_DIPENDENTI"] == null)) {
-                    return new EVENTO_PARTECIPANTIRow[0];
-                }
-                else {
-                    return ((EVENTO_PARTECIPANTIRow[])(base.GetChildRows(this.Table.ChildRelations["FK_EVENTO_PARTECIPANTI_DIPENDENTI"])));
-                }
             }
         }
         
@@ -3115,9 +3051,10 @@ namespace maddant.src.DAL.dsmaddantTableAdapters {
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT        EVENTO.*\r\nFROM            EVENTO where ( e_data=convert(date,@dataO" +
-                "ra)\r\nand e_orai <=convert(time,@dataOra) and e_oraf>=convert(time,@dataOra) ) or" +
-                " ( e_data>convert(date,@dataOra)) order by e_data desc";
+            this._commandCollection[1].CommandText = "SELECT        E_ID, A_ID, E_DATA, E_ORAI, E_ORAF\r\nFROM            EVENTO\r\nWHERE  " +
+                "      (E_DATA = CONVERT(date, @dataOra)) AND (E_ORAF >= CONVERT(time, @dataOra))" +
+                " OR\r\n                         (E_DATA > CONVERT(date, @dataOra))\r\nORDER BY E_DAT" +
+                "A DESC";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dataOra", global::System.Data.SqlDbType.DateTime, 3, global::System.Data.ParameterDirection.Input, 0, 0, "E_DATA", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
@@ -4380,24 +4317,6 @@ namespace maddant.src.DAL.dsmaddantTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateUpdatedRows(dsmaddant dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._eVENTOTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.EVENTO.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._eVENTOTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._dIPENDENTITableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.DIPENDENTI.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._dIPENDENTITableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._aZIENDATableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.AZIENDA.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -4407,12 +4326,30 @@ namespace maddant.src.DAL.dsmaddantTableAdapters {
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._eVENTOTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.EVENTO.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._eVENTOTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._eVENTO_PARTECIPANTITableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.EVENTO_PARTECIPANTI.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._eVENTO_PARTECIPANTITableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._dIPENDENTITableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.DIPENDENTI.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._dIPENDENTITableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -4426,22 +4363,6 @@ namespace maddant.src.DAL.dsmaddantTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateInsertedRows(dsmaddant dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._eVENTOTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.EVENTO.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._eVENTOTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._dIPENDENTITableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.DIPENDENTI.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._dIPENDENTITableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._aZIENDATableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.AZIENDA.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -4450,11 +4371,27 @@ namespace maddant.src.DAL.dsmaddantTableAdapters {
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._eVENTOTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.EVENTO.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._eVENTOTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._eVENTO_PARTECIPANTITableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.EVENTO_PARTECIPANTI.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._eVENTO_PARTECIPANTITableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._dIPENDENTITableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.DIPENDENTI.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._dIPENDENTITableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -4468,22 +4405,6 @@ namespace maddant.src.DAL.dsmaddantTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateDeletedRows(dsmaddant dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._eVENTO_PARTECIPANTITableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.EVENTO_PARTECIPANTI.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._eVENTO_PARTECIPANTITableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._aZIENDATableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.AZIENDA.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._aZIENDATableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._dIPENDENTITableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.DIPENDENTI.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -4492,11 +4413,27 @@ namespace maddant.src.DAL.dsmaddantTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._eVENTO_PARTECIPANTITableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.EVENTO_PARTECIPANTI.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._eVENTO_PARTECIPANTITableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._eVENTOTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.EVENTO.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._eVENTOTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._aZIENDATableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.AZIENDA.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._aZIENDATableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

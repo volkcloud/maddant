@@ -41,7 +41,7 @@ function pUpdate() {
       pAddToTable();
 
       // Clear form fields
-      formClear();
+      pClear();
 
     $("#MainContent_edPartecipante").focus();
     return false;
@@ -79,8 +79,12 @@ function pAddToTable() {
 }
 
 // Clear form fields
-function formClear() {
+function pClear() {
     $("#MainContent_edPartecipante").val("");
+
+  
+}function formClear() {
+    $("#MainContent_edAzienda").val("");
 
     $("#MainContent_edData").val(new Date(Date.now()).toLocaleString().split(',')[0]);
 }
@@ -142,7 +146,7 @@ function save() {
             "application/json;charset=utf-8",
         data: JSON.stringify(ev),
         success: function () {
-            alert('ok');
+            formClear(); alert('Operazione completata');
         },
         error: function (request, message, error) {
             alert(message + "\n" + request.responseJSON.ExceptionMessage);

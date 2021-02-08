@@ -156,11 +156,22 @@
                       <asp:Parameter DbType="Time" Name="E_ORAF" />
                   </InsertParameters>
               </asp:ObjectDataSource>
-              <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="E_ID" DataSourceID="ObjectDataSource1">
+              <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:maddantConnectionString %>" DeleteCommand="DELETE FROM EVENTO WHERE (E_ID = @e_id)" SelectCommand="SELECT EVENTO.E_ID, EVENTO.A_ID, EVENTO.E_DATA, EVENTO.E_ORAI, EVENTO.E_ORAF, AZIENDA.A_RAGSOC FROM EVENTO INNER JOIN AZIENDA ON EVENTO.A_ID = AZIENDA.A_ID WHERE (EVENTO.E_DATA = CONVERT (date, GETDATE())) AND (EVENTO.E_ORAF &gt;= CONVERT (time, GETDATE())) OR (EVENTO.E_DATA &gt; CONVERT (date, GETDATE())) ORDER BY EVENTO.E_DATA DESC">
+                  <DeleteParameters>
+                      <asp:Parameter Name="e_id" />
+                  </DeleteParameters>
+              </asp:SqlDataSource>
+              <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="E_ID" DataSourceID="SqlDataSource1" OnRowCreated="GridView1_RowCreated" Width="400px">
                   <Columns>
-                      <asp:CommandField ShowDeleteButton="True" />
+                      <asp:TemplateField ShowHeader="False">
+                          <ItemTemplate>
+                              <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete" Text="Elimina" OnClientClick="return confirm('Eliminare?'); "></asp:LinkButton>
+                          </ItemTemplate>
+                      </asp:TemplateField>
                       <asp:BoundField DataField="E_ID" HeaderText="E_ID" SortExpression="E_ID" ReadOnly="True" Visible="False" />
-                      <asp:BoundField DataField="E_DATA" DataFormatString="{0:d}" HeaderText="DATA" SortExpression="E_DATA" />
+                      <asp:BoundField DataField="E_DATA" DataFormatString="{0:d}" HeaderText="Data" SortExpression="E_DATA" />
+
+                      <asp:BoundField DataField="A_RAGSOC" HeaderText="Azienda" />
 
                   </Columns>
               </asp:GridView>

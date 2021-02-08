@@ -18,6 +18,11 @@ namespace maddant
             }
         }
 
+        protected void GridView1_RowCreated(object sender, GridViewRowEventArgs e)
+        {
+            
+        }
+
 
         //protected void btnCrea_Click(object sender, EventArgs e)
         //{
@@ -29,6 +34,6 @@ namespace maddant
 
         //}
 
-        
+
     }
 }
