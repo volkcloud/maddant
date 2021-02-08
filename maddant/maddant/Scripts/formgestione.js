@@ -16,6 +16,11 @@ for (i in myObj.cars) {
     }
 }
 */
+if (typeof alertify !== 'undefined') {
+ //   alertify.defaults.transition = "slide";
+}
+
+
 var partecipanti;
 partecipanti = {
     "last":0,
@@ -33,7 +38,11 @@ function pUpdate() {
     }
 
     if (!validationResult) {
-        alert('Specificare il partecipante');
+        
+        if (typeof alertify !== 'undefined') {
+            alertify.error('Specificare il partecipante', 5).dismissOthers(); 
+        }
+        else { alert('Specificare il partecipante'); }
         return false;
     }
 
@@ -127,7 +136,11 @@ function save() {
     }
     
     if (!validationResult) {
-        alert('Ci sono errori nei campi, impossibile proseguire');
+        //alert('Ci sono errori nei campi, impossibile proseguire');
+        if (typeof alertify !== 'undefined') {
+            alertify.warning('Ci sono errori nei campi, impossibile proseguire', 5);
+        }
+        else { alert('Ci sono errori nei campi, impossibile proseguire'); }
         return false;
     }
     //var ev = {};
@@ -146,10 +159,19 @@ function save() {
             "application/json;charset=utf-8",
         data: JSON.stringify(ev),
         success: function () {
-            formClear(); alert('Operazione completata');
+            formClear();
+    
+            if (typeof alertify !== 'undefined') {
+                alertify.success('Operazione completata', 3);
+            }
+            else { alert('Operazione completata');}
         },
         error: function (request, message, error) {
-            alert(message + "\n" + request.responseJSON.ExceptionMessage);
+            
+            if (typeof alertify !== 'undefined') {
+                alertify.error(message + "\n" + request.responseJSON.ExceptionMessage, 10);
+            }
+            else { alert(message + "\n" + request.responseJSON.ExceptionMessage); }
         }
     });
 

@@ -14,7 +14,9 @@ namespace maddant
         {
             if (!IsPostBack)
             {
-               // edData.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                // edData.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                //        <asp:LinkButton CssClass="glyphicon glyphicon-remove" ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete" Text="Elimina" OnClientClick="if (typeof alertify !== 'undefined') {document.getElementById('MainContent_edelimina').value='N';alertify.confirm('-', 'Eliminare', function(){ document.getElementById('MainContent_edelimina').value='S' ;},function(){  });return (document.getElementById('MainContent_edelimina').value=='S');}else {return confirm('Eliminare?');} "></asp:LinkButton>
+
             }
         }
 

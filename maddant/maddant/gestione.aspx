@@ -167,6 +167,9 @@
 
                   </Columns>
               </asp:GridView>
+                          <asp:TextBox visible="false"   ID="edelimina" runat="server" Width="40px"></asp:TextBox>
+
+          
           </div>      
       </div><%--row--%>
 
