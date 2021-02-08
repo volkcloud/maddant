@@ -33,7 +33,7 @@ namespace maddant.src
         public void Post(JObject eventoCompleto )
         {
 
-            int numev;
+        
             int id_az;
             int id_dip;
             int id_ev;
@@ -45,7 +45,8 @@ namespace maddant.src
             }
             catch (Exception ex)
             {
-                throw new Exception("Data non valida");
+                Utils.RaiseBllError("Data non valida");
+                return;
             }
            
 
@@ -53,9 +54,7 @@ namespace maddant.src
             using (TransactionScope scope = new TransactionScope())
             {
                 EVENTOBLL ev = new EVENTOBLL();
-                //dsmaddant.EVENTODataTable t;
-                //t = ev.GetEVENTI();
-                //numev = t.Rows.Count;
+                
               
  
                 AZIENDABLL az = new AZIENDABLL();

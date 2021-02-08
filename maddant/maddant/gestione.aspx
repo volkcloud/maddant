@@ -64,12 +64,12 @@
          <div class="col-sm-1">
              <asp:RequiredFieldValidator ValidationGroup="part" ID="RequiredFieldValidator3" runat="server" ControlToValidate="edPartecipante" CssClass="errorMsg" ErrorMessage="*"></asp:RequiredFieldValidator>
           </div>  
-          <div class="col-sm-7">
+          <div class="col-sm-5">
             <asp:TextBox ValidationGroup="part"  CssClass="form-control" ID="edPartecipante" runat="server" Width="400px"></asp:TextBox>
 
           </div>  
       
-          <div class="col-sm-1">
+          <div class="col-sm-3">
               <asp:Button  OnClientClick="return pUpdate();" class="btn btn-primary" ID="btnPart" runat="server" Text="Agg."   ValidationGroup="part" />
 
           </div>           
@@ -113,7 +113,7 @@
                 
                 <asp:Table ID="tblP" runat="server" EnableViewState="true"  class="table table-bordered table-condensed table-striped">
                     <asp:TableHeaderRow>
-                        <asp:TableHeaderCell Width="80%">Nome</asp:TableHeaderCell>
+                        <asp:TableHeaderCell Width="90%">Nome</asp:TableHeaderCell>
                         <asp:TableHeaderCell>X</asp:TableHeaderCell>
                     </asp:TableHeaderRow>
 
@@ -123,7 +123,7 @@
           
            <div class="col-sm-1">
            </div>
-      </div><%--container--%>
+      </div>
 
 
         <div class="row">
@@ -144,18 +144,6 @@
 
       <div class="row">
           <div class="col-sm-12">
-              <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" DeleteMethod="DelEVENTOByID" InsertMethod="AddEVENTO" OldValuesParameterFormatString="original_{0}" SelectMethod="GetEVENTIFuturi" TypeName="EVENTOBLL">
-                  <DeleteParameters>
-                      <asp:Parameter Name="Original_E_ID" Type="Int32" />
-                  </DeleteParameters>
-                  <InsertParameters>
-                      <asp:Parameter Name="E_ID" Type="Int32" />
-                      <asp:Parameter Name="A_ID" Type="Int32" />
-                      <asp:Parameter Name="E_DATA" Type="DateTime" />
-                      <asp:Parameter DbType="Time" Name="E_ORAI" />
-                      <asp:Parameter DbType="Time" Name="E_ORAF" />
-                  </InsertParameters>
-              </asp:ObjectDataSource>
               <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:maddantConnectionString %>" DeleteCommand="DELETE FROM EVENTO WHERE (E_ID = @e_id)" SelectCommand="SELECT EVENTO.E_ID, EVENTO.A_ID, EVENTO.E_DATA, EVENTO.E_ORAI, EVENTO.E_ORAF, AZIENDA.A_RAGSOC FROM EVENTO INNER JOIN AZIENDA ON EVENTO.A_ID = AZIENDA.A_ID WHERE (EVENTO.E_DATA = CONVERT (date, GETDATE())) AND (EVENTO.E_ORAF &gt;= CONVERT (time, GETDATE())) OR (EVENTO.E_DATA &gt; CONVERT (date, GETDATE())) ORDER BY EVENTO.E_DATA DESC">
                   <DeleteParameters>
                       <asp:Parameter Name="e_id" />
@@ -165,7 +153,8 @@
                   <Columns>
                       <asp:TemplateField ShowHeader="False">
                           <ItemTemplate>
-                              <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete" Text="Elimina" OnClientClick="return confirm('Eliminare?'); "></asp:LinkButton>
+                              <asp:LinkButton CssClass="glyphicon glyphicon-remove" ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete" Text="Elimina" OnClientClick="return confirm('Eliminare?'); "></asp:LinkButton>
+                         
                           </ItemTemplate>
                       </asp:TemplateField>
                       <asp:BoundField DataField="E_ID" HeaderText="E_ID" SortExpression="E_ID" ReadOnly="True" Visible="False" />

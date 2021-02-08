@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("maddant")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Hewlett-Packard")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("maddant")]
-[assembly: AssemblyCopyright("Copyright © Hewlett-Packard 2021")]
+[assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Se il progetto viene esposto a COM, il GUID seguente verrà utilizzato per creare l'ID della libreria dei tipi
-[assembly: Guid("d45376de-12a3-496b-8eac-e1ea5304f0b2")]
+[assembly: Guid("b966d3b7-2c83-4c04-8d7f-52b8ebfbb719")]
 
 // Le informazioni sulla versione di un assembly sono costituite dai quattro valori seguenti:
 //

@@ -11,52 +11,52 @@ namespace maddant
 {
 
 
-    public partial class Evento
+    public partial class _Default
     {
 
         /// <summary>
-        /// Controllo form1.
+        /// Controllo UpdatePanel1.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
 
         /// <summary>
-        /// Controllo lblAz.
+        /// Controllo tmrLive.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAz;
+        protected global::System.Web.UI.Timer tmrLive;
 
         /// <summary>
-        /// Controllo Repeater1.
+        /// Controllo Label1.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater Repeater1;
+        protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// Controllo SqlDataSource1.
+        /// Controllo pnlNormale.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.WebControls.Panel pnlNormale;
 
         /// <summary>
-        /// Controllo edEvID.
+        /// Controllo pnlEvento.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox edEvID;
+        protected global::System.Web.UI.WebControls.Panel pnlEvento;
     }
 }

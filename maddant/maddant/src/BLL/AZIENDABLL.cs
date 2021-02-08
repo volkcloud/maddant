@@ -53,12 +53,12 @@ public class AZIENDABLL
 
 
 
-    //[System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, false)]
-    //public maddant.src.DAL.dsmaddant.AZIENDADataTable GetAZIENDAByID(int A_ID
-    //    )
-    //{
-    //    return Adapter.GetAZIENDAByID(A_ID);
-    //}
+    [System.ComponentModel.DataObjectMethod(System.ComponentModel.DataObjectMethodType.Select, false)]
+    public maddant.src.DAL.dsmaddant.AZIENDADataTable GetAZIENDAByID(int A_ID
+        )
+    {
+        return Adapter.GetAZIENDAByID(A_ID);
+    }
 
 
 

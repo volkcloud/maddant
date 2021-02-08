@@ -17,7 +17,7 @@ namespace maddant
             // Codice eseguito all'avvio dell'applicazione
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-		 GlobalConfiguration.Configure(WebApiConfig.Register);
+            GlobalConfiguration.Configure(WebApiConfig.Register);
         }
     }
 }

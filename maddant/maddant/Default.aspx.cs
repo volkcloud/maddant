@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace maddant
 {
-    public partial class Default2 : System.Web.UI.Page
+    public partial class _Default : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -18,7 +18,7 @@ namespace maddant
 
                 manageFields();
 
-                Int32 intSec = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["sec_refresh"]);
+                Int32 intSec =Convert.ToInt32( System.Configuration.ConfigurationManager.AppSettings["sec_refresh"]);
                 tmrLive.Interval = intSec * 1000;
             }
 
@@ -26,7 +26,7 @@ namespace maddant
 
         protected void tmrLive_Tick(object sender, EventArgs e)
         {
-           // Label1.Text = DateTime.Now.ToString("HH:mm:ss");
+            Label1.Text = DateTime.Now.ToString("HH:mm:ss");
             manageFields();
 
         }

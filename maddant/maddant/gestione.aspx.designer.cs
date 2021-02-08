@@ -7,11 +7,13 @@
 // </generato automaticamente>
 //------------------------------------------------------------------------------
 
-namespace maddant {
-    
-    
-    public partial class gestione1 {
-        
+namespace maddant
+{
+
+
+    public partial class gestione1
+    {
+
         /// <summary>
         /// Controllo Label1.
         /// </summary>
@@ -20,7 +22,7 @@ namespace maddant {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label1;
-        
+
         /// <summary>
         /// Controllo RequiredFieldValidator1.
         /// </summary>
@@ -29,7 +31,7 @@ namespace maddant {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
-        
+
         /// <summary>
         /// Controllo edAzienda.
         /// </summary>
@@ -38,7 +40,7 @@ namespace maddant {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox edAzienda;
-        
+
         /// <summary>
         /// Controllo Label2.
         /// </summary>
@@ -47,7 +49,7 @@ namespace maddant {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label2;
-        
+
         /// <summary>
         /// Controllo RequiredFieldValidator2.
         /// </summary>
@@ -56,7 +58,7 @@ namespace maddant {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
-        
+
         /// <summary>
         /// Controllo RegularExpressionValidator1.
         /// </summary>
@@ -65,7 +67,7 @@ namespace maddant {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
-        
+
         /// <summary>
         /// Controllo edData.
         /// </summary>
@@ -74,7 +76,7 @@ namespace maddant {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox edData;
-        
+
         /// <summary>
         /// Controllo Label3.
         /// </summary>
@@ -83,7 +85,7 @@ namespace maddant {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label3;
-        
+
         /// <summary>
         /// Controllo RequiredFieldValidator3.
         /// </summary>
@@ -92,7 +94,7 @@ namespace maddant {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
-        
+
         /// <summary>
         /// Controllo edPartecipante.
         /// </summary>
@@ -101,7 +103,7 @@ namespace maddant {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox edPartecipante;
-        
+
         /// <summary>
         /// Controllo btnPart.
         /// </summary>
@@ -110,7 +112,7 @@ namespace maddant {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnPart;
-        
+
         /// <summary>
         /// Controllo tblP.
         /// </summary>
@@ -119,7 +121,7 @@ namespace maddant {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Table tblP;
-        
+
         /// <summary>
         /// Controllo btnCrea.
         /// </summary>
@@ -128,16 +130,7 @@ namespace maddant {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCrea;
-        
-        /// <summary>
-        /// Controllo ObjectDataSource1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generato automaticamente.
-        /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource1;
-        
+
         /// <summary>
         /// Controllo SqlDataSource1.
         /// </summary>
@@ -146,7 +139,7 @@ namespace maddant {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
-        
+
         /// <summary>
         /// Controllo GridView1.
         /// </summary>
