@@ -4,30 +4,10 @@
     <link href="Content/Site.css" rel="stylesheet" />
 
     <form id="form1" runat="server">
-        <div class="container">
 
-              <div class="row">
-                  
-                  <div class="col-sm-10">
-                    <asp:Label ID="lblAz" runat="server" Text="."  style="font-size: 50px;"></asp:Label>
-                  </div>
-                  <div class="col-sm-2"></div>
-      
-              </div><%--row--%>
-
-
-
-              <div class="row">
-                  <div class="col-sm-5">
-                      <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
-
-                  </div>
-                  <div class="col-sm-7">
-
-  
-                      
-    
-                        <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1" OnItemDataBound="Repeater1_ItemDataBound">
+          <div class="container-fluid" style="max-width: none;">
+                <div class="container-fluid-side">
+                       <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1" OnItemDataBound="Repeater1_ItemDataBound">
                          <HeaderTemplate>
                 
                                     <div class="list-group">
@@ -44,13 +24,41 @@
                                 </div>
                             </FooterTemplate>
                         </asp:Repeater>
+                            
+                </div><%--side--%>
 
+                <div class="container-fluid-body">
+           
+                 <div class="nocontainer">
 
-
-                  </div>
+                          <div class="norow">
                   
+                              <div class="col-sm-12">
+                               <asp:Label ID="lblAz" runat="server" Text="."  style="font-size: 50px;"></asp:Label>
+                              </div>
+                            
       
-              </div><%--row--%>
+                          </div><%--row azienda --%>
+
+
+
+                          <div class="norow">
+                              <div class="col-sm-12">
+                                  <div id="MyClockDisplay" class="clock" onload="showTime()">
+
+                                  </div>
+
+                             </div>
+                         </div> <%--row clock--%>
+                    </div> <%--container--%>      
+
+
+                </div><%--body--%>
+
+        </div><%--container-fluid--%>
+
+
+        
 
 
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:maddantConnectionString %>" SelectCommand="SELECT DIPENDENTI.*, EVENTO_PARTECIPANTI.E_ID FROM EVENTO_PARTECIPANTI INNER JOIN DIPENDENTI ON EVENTO_PARTECIPANTI.D_ID = DIPENDENTI.D_ID WHERE (EVENTO_PARTECIPANTI.E_ID = @e_id)">
@@ -60,8 +68,7 @@
         </asp:SqlDataSource>
         <asp:TextBox ID="edEvID" runat="server" Visible="False"></asp:TextBox>
 
-         </div><%--container--%>
-          
+       
 
 
 

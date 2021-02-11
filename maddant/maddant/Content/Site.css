@@ -6,6 +6,38 @@
     letter-spacing: 7px;
 }
 
+.msg {
+    background: #aaa;
+    padding: .2em;
+    border-bottom: 1px #000 solid
+}
+
+.old {
+    background-color: #246499;
+}
+
+.new {
+    background-color: #3B9957;
+}
+
+.error {
+    background-color: #992E36;
+}
+
+.container-fluid-body {
+    /*background-color: #FF0000;*/
+    border-radius: .25rem;
+    margin-right: 51%;
+}
+
+.container-fluid-side {
+    /*background-color: #00FF00;*/
+    float: right;
+    width: 50%;
+    border-radius: .25rem;
+}
+
+
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
     padding-top: 50px;
